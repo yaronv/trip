@@ -2,7 +2,6 @@ package yv.trip;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,14 +15,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import yv.trip.adapters.MyAdapter;
 import yv.trip.fragments.FlightsFragment;
 import yv.trip.fragments.HotelsFragment;
 
 public class MainActivity extends ActionBarActivity {
-
 
     String TITLES[] = {"Flights","Hotels"};
     int ICONS[] = {R.drawable.ic_action_plane,R.drawable.ic_action_home};
@@ -33,12 +30,12 @@ public class MainActivity extends ActionBarActivity {
     String WEBSITE = "http://yaronvazana.com";
     int PROFILE = R.drawable.self;
 
-    private Toolbar toolbar;                              // Declaring the Toolbar Object
+    private Toolbar toolbar;
 
-    RecyclerView mRecyclerView;                           // Declaring RecyclerView
-    RecyclerView.Adapter mAdapter;                        // Declaring Adapter For Recycler View
-    RecyclerView.LayoutManager mLayoutManager;            // Declaring Layout Manager as a linear layout manager
-    DrawerLayout Drawer;                                  // Declaring DrawerLayout
+    RecyclerView mRecyclerView;
+    RecyclerView.Adapter mAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+    DrawerLayout Drawer;
 
     int lastMenu = -1;
 
@@ -46,7 +43,6 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -57,9 +53,6 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
 
-    /* Assinging the toolbar object ot the view
-    and setting the the Action bar to our toolbar
-     */
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
@@ -67,10 +60,9 @@ public class MainActivity extends ActionBarActivity {
 
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
 
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE,WEBSITE,this);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
+        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE,WEBSITE,this);
 
-        mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
-
+        mRecyclerView.setAdapter(mAdapter);
 
         final GestureDetector mGestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
@@ -168,7 +160,6 @@ public class MainActivity extends ActionBarActivity {
                 openFragment(new HotelsFragment());
                 break;
             default:
-                return;
         }
     }
 }
