@@ -15,6 +15,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import yv.trip.adapters.MyAdapter;
 import yv.trip.fragments.FlightsFragment;
@@ -63,6 +66,14 @@ public class MainActivity extends ActionBarActivity {
         mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE,WEBSITE,this);
 
         mRecyclerView.setAdapter(mAdapter);
+
+        // get the fadein animation
+        final Animation animationFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+
+        final ImageView bgImage = (ImageView)findViewById(R.id.bg_image);
+
+        // fade in the background image
+        bgImage.startAnimation(animationFadeIn);
 
         final GestureDetector mGestureDetector = new GestureDetector(MainActivity.this, new GestureDetector.SimpleOnGestureListener() {
 
