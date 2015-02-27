@@ -123,9 +123,6 @@ public class MainActivity extends ActionBarActivity {
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
             }
-
-
-
         };
 
         Drawer.setDrawerListener(mDrawerToggle);

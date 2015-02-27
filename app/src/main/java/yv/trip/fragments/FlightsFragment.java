@@ -1,9 +1,5 @@
 package yv.trip.fragments;
 
-/**
- * Created by yaron on 22/02/15.
- */
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
