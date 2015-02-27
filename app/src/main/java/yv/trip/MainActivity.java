@@ -21,17 +21,18 @@ import android.widget.ImageView;
 
 import yv.trip.adapters.MyAdapter;
 import yv.trip.fragments.FlightsFragment;
+import yv.trip.fragments.HomeFragment;
 import yv.trip.fragments.HotelsFragment;
 
 public class MainActivity extends ActionBarActivity {
 
-    String TITLES[] = {"Flights","Hotels"};
-    int ICONS[] = {R.drawable.ic_action_plane,R.drawable.ic_action_home};
+    String TITLES[] = {"Home", "Flights", "Hotels"};
+    int ICONS[] = {R.drawable.ic_action_user, R.drawable.ic_action_plane, R.drawable.ic_action_home};
 
-    String NAME = "Yaron Vazana";
+    String NAME = "Yaron & Tali";
     String EMAIL = "yaronv99@gmail.com";
     String WEBSITE = "http://yaronvazana.com";
-    int PROFILE = R.drawable.self;
+    int PROFILE = R.drawable.us;
 
     private Toolbar toolbar;
 
@@ -49,8 +50,7 @@ public class MainActivity extends ActionBarActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         super.onCreate(savedInstanceState);
 
@@ -59,9 +59,9 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
+        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
 
-        mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
+        mRecyclerView.setHasFixedSize(true);
 
         mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE,WEBSITE,this);
 
@@ -106,13 +106,13 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
+        mLayoutManager = new LinearLayoutManager(this);
 
-        mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
+        Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.openDrawer,R.string.closeDrawer){
+        mDrawerToggle = new ActionBarDrawerToggle(this, Drawer, toolbar, R.string.openDrawer, R.string.closeDrawer){
 
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -126,10 +126,10 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        }; // Drawer Toggle Object Made
-        Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
-        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
+        };
 
+        Drawer.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
     }
 
 
@@ -165,9 +165,12 @@ public class MainActivity extends ActionBarActivity {
 
         switch (lastMenu = position) {
             case 1:
-                openFragment(new FlightsFragment());
+                openFragment(new HomeFragment());
                 break;
             case 2:
+                openFragment(new FlightsFragment());
+                break;
+            case 3:
                 openFragment(new HotelsFragment());
                 break;
             default:
