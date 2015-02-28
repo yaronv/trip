@@ -98,11 +98,9 @@ public class FlightsFragment extends Fragment {
     }
 
     private void initList() {
-
-        // We populate the flights
-        flightsList.add(createFlight("Tel Aviv", "Moscow", "03/24/2015", "SU", "", "TLV", "VKO"));
-        flightsList.add(createFlight("Moscow", "Tokyo", "03/24/2015", "SU", "", "VKO", "NRT"));
-
+        // We populate the flights details
+        flightsList.add(createFlight("Tel Aviv", "Moscow", "03/24/2015", "SU", "505", "TLV", "VKO"));
+        flightsList.add(createFlight("Moscow", "Tokyo", "03/24/2015", "SU", "260", "VKO", "NRT"));
         flightsList.add(createFlight("Osaka", "Hong Kong", "04/14/2015", "AI", "315", "KIX", "HKG"));
         flightsList.add(createFlight("Hong Kong", "Guilin", "04/19/2015", "CX", "5700", "HKG", "KWL"));
         flightsList.add(createFlight("Guilin", "Beijing", "04/23/2015", "CA", "1312", "KWL", "PEK"));
@@ -233,8 +231,9 @@ public class FlightsFragment extends Fragment {
          * @return {String}
          */
         protected String addParamsToUrl(String url, List<String> flightInfo){
-            if(!url.endsWith("?"))
+            if(!url.endsWith("?")) {
                 url += "?";
+            }
 
             List<NameValuePair> params = new ArrayList<>();
             params.add(new BasicNameValuePair("Airline", flightInfo.get(INDEX_AIRLINE)));
